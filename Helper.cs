@@ -8,3 +8,9 @@ namespace AdventOfCode;
 internal class Helper
 {
 }
+
+internal class Day
+{
+    public virtual string PartOne() => "Not implemented";
+    public virtual string PartTwo() => "Not implemented";
+}
