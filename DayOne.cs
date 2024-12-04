@@ -35,7 +35,13 @@ public class DayOne : Day
         var splited = Input.Split("\n");
         List<int> leftValues = [];
         List<int> rightValues = [];
-        
+        foreach (var line in splited)
+        {
+            var values = line.Split();
+            leftValues.Add(Convert.ToInt32(values[0]));
+            rightValues.Add(Convert.ToInt32(values[^1]));
+        }
+
         foreach (var lValue in leftValues)
         {
             int occurences = 0;
