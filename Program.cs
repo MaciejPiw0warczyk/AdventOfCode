@@ -8,6 +8,7 @@ internal class Program
 
         var day = new DayOne();
         var day2 = new DayTwo();
+        var day3 = new DayThree();
 
         Console.WriteLine("Day One");
         Console.WriteLine(day.PartOne());
@@ -16,5 +17,9 @@ internal class Program
         Console.WriteLine("Day Two");
         Console.WriteLine(day2.PartOne());
         Console.WriteLine(day2.PartTwo());
+
+        Console.WriteLine("Day Three");
+        Console.WriteLine(day3.PartOne());
+        Console.WriteLine(day3.PartTwo());
     }
 }
