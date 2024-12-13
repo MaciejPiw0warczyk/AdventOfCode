@@ -16,7 +16,7 @@ internal class Program
 
         foreach (Day day in days)
         {
-            Console.WriteLine(nameof(day));
+            Console.WriteLine(day.GetType().Name);
             Console.WriteLine(day.PartOne());
             Console.WriteLine(day.PartTwo());
             Console.WriteLine();
