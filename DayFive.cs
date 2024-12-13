@@ -91,7 +91,6 @@ internal class DayFive : Day
     public override string PartTwo()
     {
         int output = 0;
-        var splited = Input.Split("\n").ToList();
         List<string[]> rules;
         List<string[]> updates;
         List<string[]> inCorrectUpdates = [];
@@ -122,9 +121,7 @@ internal class DayFive : Day
 
                         if (rule[0] == update[k] && rule[1] == update[j])
                         {
-                            var temp = update[j];
-                            update[j] = update[k];
-                            update[k] = temp;
+                            (update[k], update[j]) = (update[j], update[k]);
                             break;
                         }
                     }
