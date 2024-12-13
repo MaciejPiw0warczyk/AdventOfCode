@@ -6,6 +6,7 @@ internal class DayFive : Day
 
     private void Prepare(out List<string[]> l1, out List<string[]> l2)
     {
+        int output = 0;
         var temp = Input.Split("\n").ToList();
         bool readingRules = true;
         l1 = [];
@@ -30,24 +31,28 @@ internal class DayFive : Day
     }
 
     private bool UpdateIsCorrect(string[] update, List<string[]> rules)
-    {
-        bool isCorrect = true;
-
-        for (int j = 0; j < update.Length; j++)
         {
-            string? page = update[j];
+            string[]? update = updates[i];
+            bool isCorrect = true;
 
-            for (int k = j + 1; k < update.Length; k++)
+            for (int j = 0; j < update.Length; j++)
             {
-                foreach (var rule in rules)
-                {
-                    if (rule[0] == page && rule[1] == update[k])
-                        break;
+                string? page = update[j];
 
-                    if (rule[0] == update[k] && rule[1] == page)
+                for (int k = j + 1; k < update.Length; k++)
+                {
+                    foreach (var rule in rules)
                     {
-                        isCorrect = false;
-                        break;
+                        if (rule[0] == page && rule[1] == update[k])
+                            break;
+
+                        if (rule[0] == update[k] && rule[1] == page)
+                        {
+                            isCorrect = false;
+                            break;
+                        }
+                        if (!isCorrect)
+                        { break; }
                     }
                     if (!isCorrect)
                     { break; }
@@ -55,9 +60,6 @@ internal class DayFive : Day
                 if (!isCorrect)
                 { break; }
             }
-            if (!isCorrect)
-            { break; }
-        }
         return isCorrect;
     }
 
@@ -97,10 +99,31 @@ internal class DayFive : Day
 
         Prepare(out rules, out updates);
 
+            if (readingRules)
+            {
+                rules.Add(line.Split("|"));
+            }
+            else
+            {
+                updates.Add(line.Split(","));
+            }
+        }
 
         for (int i = 0; i < updates.Count; i++)
         {
             string[]? update = updates[i];
+            bool isCorrect = true;
+
+            for (int j = 0; j < update.Length; j++)
+            {
+                string? page = update[j];
+
+                for (int k = j + 1; k < update.Length; k++)
+                {
+                    foreach (var rule in rules)
+                    {
+                        if (rule[0] == page && rule[1] == update[k])
+                            break;
 
             if (!UpdateIsCorrect(update, rules))
             { inCorrectUpdates.Add(update); }
