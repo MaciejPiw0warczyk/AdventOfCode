@@ -97,7 +97,6 @@ internal class DayFive : Day
 
         Prepare(out rules, out updates);
 
-
         for (int i = 0; i < updates.Count; i++)
         {
             string[]? update = updates[i];
