@@ -6,25 +6,20 @@ internal class Program
         Helper.SessionId = args[0];
         Helper.Year = args[1];
 
-        var day = new DayOne();
-        var day2 = new DayTwo();
-        var day3 = new DayThree();
-        var day4 = new DayFour();
+        List<Day> days = new List<Day>();
 
-        Console.WriteLine("Day One");
-        Console.WriteLine(day.PartOne());
-        Console.WriteLine(day.PartTwo());
+        days.Add(new DayOne());
+        days.Add(new DayTwo());
+        days.Add(new DayThree());
+        days.Add(new DayFour());
+        days.Add(new DayFive());
 
-        Console.WriteLine("Day Two");
-        Console.WriteLine(day2.PartOne());
-        Console.WriteLine(day2.PartTwo());
-
-        Console.WriteLine("Day Three");
-        Console.WriteLine(day3.PartOne());
-        Console.WriteLine(day3.PartTwo());
-
-        Console.WriteLine("Day For");
-        Console.WriteLine(day4.PartOne());
-        Console.WriteLine(day4.PartTwo());
+        foreach (Day day in days)
+        {
+            Console.WriteLine(nameof(day));
+            Console.WriteLine(day.PartOne());
+            Console.WriteLine(day.PartTwo());
+            Console.WriteLine();
+        }
     }
 }
